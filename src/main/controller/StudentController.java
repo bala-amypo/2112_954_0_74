@@ -11,5 +11,5 @@ import com.example.demo.service.StudentService;
 public class StudentController{
     @Autowired
     private StudentService service;
-    public 
+    public Student
 }
