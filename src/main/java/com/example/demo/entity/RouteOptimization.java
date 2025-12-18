@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class RouteOptimizationResult {
+public class RouteOptimization {
 
     @Id
     @GeneratedValue
