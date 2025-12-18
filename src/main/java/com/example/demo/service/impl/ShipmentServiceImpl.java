@@ -22,9 +22,17 @@ public class ShipmentServiceImpl implements ShipmentService {
         this.vehicleRepo = vehicleRepo;
     }
 
+    @Override
     public Shipment createShipment(Long vehicleId, Shipment shipment) {
+
         Vehicle vehicle = vehicleRepo.findById(vehicleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found"));
+
+        if (shipment.getWeightKg() == null)
+            throw new IllegalArgumentException("Weight is required");
+
+        if (shipment.getScheduledDate() == null)
+            throw new IllegalArgumentException("Scheduled date is required");
 
         if (shipment.getWeightKg() > vehicle.getCapacityKg())
             throw new IllegalArgumentException("Weight exceeds vehicle capacity");
@@ -36,8 +44,6 @@ public class ShipmentServiceImpl implements ShipmentService {
         return shipmentRepo.save(shipment);
     }
 
+    @Override
     public Shipment getShipment(Long shipmentId) {
         return shipmentRepo.findById(shipmentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Shipment not found"));
-    }
-}
