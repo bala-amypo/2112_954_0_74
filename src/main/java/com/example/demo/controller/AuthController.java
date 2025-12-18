@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +14,16 @@ public class AuthController {
         this.userService = userService;
     }
 
+    // REGISTER
     @PostMapping("/register")
     public User register(@RequestBody User user) {
         return userService.register(user);
     }
 
+    // LOGIN
     @PostMapping("/login")
-    public String login(@RequestParam String email,
-                        @RequestParam String password) {
+    public User login(@RequestParam String email,
+                      @RequestParam String password) {
         return userService.login(email, password);
     }
 }
