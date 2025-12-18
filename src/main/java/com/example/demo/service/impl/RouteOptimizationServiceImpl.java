@@ -2,7 +2,6 @@ package com.example.demo.service.impl;
 
 import com.example.demo.entity.RouteOptimization;
 import com.example.demo.entity.Shipment;
-import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.RouteOptimizationRepository;
 import com.example.demo.repository.ShipmentRepository;
 import com.example.demo.service.RouteOptimizationService;
@@ -25,8 +24,8 @@ public class RouteOptimizationServiceImpl implements RouteOptimizationService {
     @Override
     public RouteOptimization optimizeRoute(Long shipmentId) {
 
-        Shipment shipment = shipmentRepo.findById(shipmentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Shipment not found"));
+        Shipment shipment = shipmentRepo.findById(shipmentId).orElse(null);
+        if (shipment == null) return null;
 
         RouteOptimization result = new RouteOptimization();
         result.setShipment(shipment);
