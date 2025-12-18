@@ -14,19 +14,21 @@ import java.time.LocalDateTime;
 public class RouteOptimizationServiceImpl implements RouteOptimizationService {
 
     private final ShipmentRepository shipmentRepo;
-    private final RouteOptimizationResultRepository resultRepo;
+    private final RouteOptimizationRepository resultRepo;
 
     public RouteOptimizationServiceImpl(ShipmentRepository shipmentRepo,
-                                        RouteOptimizationResultRepository resultRepo) {
+                                        RouteOptimizationRepository resultRepo) {
         this.shipmentRepo = shipmentRepo;
         this.resultRepo = resultRepo;
     }
 
-    public RouteOptimizationResult optimizeRoute(Long shipmentId) {
+    @Override
+    public RouteOptimization optimizeRoute(Long shipmentId) {
+
         Shipment shipment = shipmentRepo.findById(shipmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Shipment not found"));
 
-        RouteOptimizationResult result = new RouteOptimizationResult();
+        RouteOptimization result = new RouteOptimization();
         result.setShipment(shipment);
         result.setOptimizedDistanceKm(120.0);
         result.setEstimatedFuelUsage(15.0);
