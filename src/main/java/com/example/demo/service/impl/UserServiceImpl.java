@@ -15,6 +15,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User login(String email, String password) {
+        // Simple login logic (NO EXCEPTION)
+        return userRepo.findByEmailAndPassword(email, password).orElse(null);
+    }
+
+    @Override
     public User getUser(Long id) {
         return userRepo.findById(id).orElse(null);
     }
