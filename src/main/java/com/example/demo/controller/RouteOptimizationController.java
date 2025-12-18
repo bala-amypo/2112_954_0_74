@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.RouteOptimizationResult;
+import com.example.demo.entity.RouteOptimization;
 import com.example.demo.service.RouteOptimizationService;
 import org.springframework.web.bind.annotation.*;
 
