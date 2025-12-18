@@ -47,3 +47,4 @@ public class ShipmentServiceImpl implements ShipmentService {
     @Override
     public Shipment getShipment(Long shipmentId) {
         return shipmentRepo.findById(shipmentId)
+}

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class RouteOptimizationResult {
+public class RouteOptimization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class RouteOptimizationResult {
     private Double estimatedFuelUsage;
     private LocalDateTime generatedAt;
 
-    public RouteOptimizationResult() {}
+    public RouteOptimization() {}
 
     public Long getId() {
         return id;
